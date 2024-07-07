@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>List of Tasks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.webp" alt="Logo">
+        </div>
+        <h1>Lista Zadań</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Opis</th>
+                    <th>Status</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.description}"></td>
+                    <td th:text="${task.completed} ? 'Ukończone' : 'Do Wykonania'"></td>
+                    <td>
+                        <form th:action="@{/tasks/complete}" method="post" class="inline-form">
+                            <input type="hidden" th:name="id" th:value="${task.id}" />
+                            <button type="submit" th:disabled="${task.completed}" class="btn">Oznacz jako ukończone</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/}" class="back-link">Strona Główna</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Dodaj Zadanie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.webp" alt="Logo">
+        </div>
+        <h1>Dodaj Zadanie</h1>
+        <form action="#" th:action="@{/addTask}" th:object="${task}" method="post" class="form">
+            <p>
+                <label for="description">Opis:</label>
+                <input type="text" id="description" th:field="*{description}" />
+            </p>
+            <p>
+                <input type="submit" value="Dodaj" class="btn" />
+            </p>
+        </form>
+        <a th:href="@{/}" class="back-link">Strona Główna</a>
+    </div>
+</body>
+</html>
